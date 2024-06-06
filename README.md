@@ -35,7 +35,7 @@ function Login() {
     return (
         <main>
             <h1>Sign in</h1>
-            {captchaOk ? (
+            {!captchaOk ? (
                 <TinyReactCaptcha
                     okCallback={setCaptchaOk}
                 />
