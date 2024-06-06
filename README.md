@@ -1,12 +1,12 @@
 # Tiny React Captcha
 
-A tiny captcha component for React
+**A tiny captcha component for React**
 
+- 14.8kb minified, 5.6kb gzipped
+- client side only
 - using a `canvas` element to paint chars
 - fully customizable
-- simple detection of bots
-- - mouse moves as straight line
-- - 
+- simple bot detection (`/src/utils/behaviour.ts`, `/src/Captcha.tsx`)
 - works for SSR
 - no dependencies
 
@@ -55,9 +55,9 @@ function Login() {
 
 If used in `remix`, you might need to add the package as `serverDependenciesToBundle` in `remix.config.js`
 
-``JSON
+```
   serverDependenciesToBundle: ["tiny-react-captcha"]
-``
+```
 
 
 ## Properties
