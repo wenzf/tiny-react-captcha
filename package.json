@@ -7,7 +7,7 @@
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
   "files": [
-    "/lib" 
+    "/lib"
   ],
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
@@ -17,14 +17,11 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-
   },
   "author": {
     "name": "Wenzel Frick",
     "url": "https://wefrick.com",
     "email": "hello@wefrick.com"
-    
-
   },
   "repository": {
     "type": "git",
@@ -41,7 +38,11 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.12.0"
   },
-  "keywords": ["react", "captcha", "remix"],
+  "keywords": [
+    "react",
+    "captcha",
+    "remix"
+  ],
   "externals": {
     "react": "react"
   }
