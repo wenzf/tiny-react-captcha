@@ -13,7 +13,7 @@ export declare const CAPTCHA_DEFAULTS: Readonly<{
     STRING_MIN_LENGTH: 4;
     STRING_MAX_LENGTH: 6;
     TIME_BEFORE_INPUTS: 2000;
-    MAX_ATTEMPTS: 10;
+    MAX_ATTEMPTS: 4;
     PREFERED_THEME: PreferedTheme;
     LANGAUGE: CaptchaLanguage;
     USE_STYLE_SHEET: true;

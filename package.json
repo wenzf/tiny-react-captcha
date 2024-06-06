@@ -1,7 +1,8 @@
 {
   "name": "tiny-react-captcha",
-  "version": "1.0.2a",
-  "description": "",
+  "version": "1.0.3",
+  "description": "A tiny captcha component for React",
+  "license": "MIT",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -18,8 +19,17 @@
     "react-dom": "^18.2.0"
 
   },
-  "author": "wenzf",
-  "license": "MIT",
+  "author": {
+    "name": "Wenzel Frick",
+    "url": "https://wefrick.com",
+    "email": "hello@wefrick.com"
+    
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wenzf/tiny-react-captcha"
+  },
   "devDependencies": {
     "@eslint/compat": "^1.0.3",
     "@eslint/js": "^9.4.0",
@@ -31,7 +41,7 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.12.0"
   },
-  "keywords": ["react", "captcha"],
+  "keywords": ["react", "captcha", "remix"],
   "externals": {
     "react": "react"
   }

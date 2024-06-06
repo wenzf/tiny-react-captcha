@@ -59,6 +59,10 @@ npm install tiny-react-captcha
 ## Example
 
 ```TSX
+import TinyReactCaptcha from 'tiny-react-captcha'
+import 'tiny-react-captcha/lib/css/css.css'
+
+
 function Login() {
     const [captchaOk, setCaptchaOk] = useState(false);
     return (
