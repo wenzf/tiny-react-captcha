@@ -27,7 +27,7 @@ npm install tiny-react-captcha
 
 ```TSX
 import TinyReactCaptcha from 'tiny-react-captcha'
-import 'tiny-react-captcha/trc-styles.css'
+import 'tiny-react-captcha/lib/trc-styles.css'
 
 
 function Login() {
