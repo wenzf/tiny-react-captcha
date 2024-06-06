@@ -80,7 +80,7 @@ If used in `remix`, you might need to add the package as `serverDependenciesToBu
 |`false`| `htmlPropsTitle` | `HTMLAttributes<HTMLDivElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsCanvasFrame` | `HTMLAttributes<HTMLDivElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsCanvas` | `HTMLAttributes<HTMLCanvasElement>` | `undefined` | inject html props |
-|`false`| `htmlPropsRefreshButton` | `HtmlHTMLAttributes<HTMLButtonElement>` | `undefined` | inject html props |
+|`false`| `htmlPropsRefreshButton` | `HTMLAttributes<HTMLButtonElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsInputFrame` | `HTMLAttributes<HTMLFieldSetElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsLabel` | `HTMLAttributes<HTMLLabelElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsLabelText` | `HTMLAttributes<HTMLSpanElement>` | `undefined` | inject html props |
