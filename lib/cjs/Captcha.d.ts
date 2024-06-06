@@ -1,2 +1,0 @@
-import { CaptchaProps } from "./types";
-export declare const Captcha: ({ okCallback, stringMinLen, stringMaxLen, captchaStringType, captchaCharsCollection, caseSensitive, timeBeforeInputInMS, maxAttempts, perferedTheme, language, useStyleSheet, htmlPropsForm, htmlPropsTitle, htmlPropsCanvasFrame, htmlPropsCanvas, htmlPropsRefreshButton, htmlPropsOkButton, htmlPropsInputFrame, htmlPropsLabel, htmlPropsLabelText, htmlPropsInput, htmlPropsFail, textTitle, textTryAgain, textEnterCaptcha, textOk, textFail, failCallback }: CaptchaProps) => import("react/jsx-runtime").JSX.Element;
