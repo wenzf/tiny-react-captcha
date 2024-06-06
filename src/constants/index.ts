@@ -1,4 +1,11 @@
-import { BehaviourEvents, BehaviourItems, CaptchaLanguage, CaptchaText, ClientInfo, PreferedTheme } from "./types";
+import { BehaviourEvents, BehaviourItems, CaptchaLanguage, CaptchaText, ClientInfo, PreferedTheme } from "./../types";
+
+export const abcLowerCase = "abcdefghijklmnopqrstuvwxyz"
+export const abcUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+export const numbers = "0123456789"
+export const abc123Complete = abcLowerCase + abcUpperCase + numbers
+export const abcComplete = abcLowerCase + abcUpperCase
+export const abc123Friendly = "ABCDEFGHJKMNPQRTUWXYZabcdefghijkmnpqrtwxyz0123456789"
 
 export const behaviourInit: BehaviourItems = {
     keyboard: {
@@ -29,17 +36,9 @@ export const clientInfoInit: ClientInfo = {
     movements: []
 }
 
-export const canvasFonts = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia'];
+export const canvasFonts = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia']
 
-
-export const abcLowerCase = "abcdefghijklmnopqrstuvwxyz";
-export const abcUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export const numbers = "0123456789"
-export const abc123Complete = abcLowerCase + abcUpperCase + numbers;
-export const abcComplete = abcLowerCase + abcUpperCase;
-export const abc123Friendly = "ABCDEFGHJKMNPQRTUWXYZabcdefghijkmnpqrtwxyz0123456789";
-
-export const USER_INPUT_EVENTS:Record<string, BehaviourEvents> = Object.freeze({
+export const USER_INPUT_EVENTS: Record<string, BehaviourEvents> = Object.freeze({
     KEY_DOWN: 'keydown',
     KEY_UP: 'keyup',
     MOUSE_DOWN: 'mousedown',
@@ -60,7 +59,7 @@ export const CAPTCHA_DEFAULTS = Object.freeze({
 })
 
 
-export const CAPTCHA_TEXTS: CaptchaText = {
+export const CAPTCHA_TEXTS: CaptchaText = Object.freeze({
     en: {
         title: 'Are you human?',
         enterCaptcha: 'Enter captcha',
@@ -98,10 +97,9 @@ export const CAPTCHA_TEXTS: CaptchaText = {
         fail: "¿¡Realmente eres humano?!"
     },
     zh: {
-        title: '你是人类吗？',  // 你 (nǐ) - you, 人类 (rénlèi) - human
-        enterCaptcha: '输入验证码',  // 输入 (shurù) - enter, 验证码 (yànzhèngmǎ) - captcha
-        tryAgain: '错误！请重试。',  // 错误 (cuòwù) - wrong, 请 (qǐng) - please, 重试 (chóngshì) - try again
-        fail: "你真的不是人类吗？!"  // 你 (nǐ) - you, 真正的 (zhēnzhèng de) - really not, 人类 (rénlèi) - human
-    },
-
-}
+        title: '你是人类吗？',
+        enterCaptcha: '输入验证码',
+        tryAgain: '错误！请重试。',
+        fail: "你真的不是人类吗？!"
+    }
+})

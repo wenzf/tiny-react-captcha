@@ -1,30 +1,30 @@
-import { HTMLAttributes, HtmlHTMLAttributes } from "react"
+import { HTMLAttributes } from "react"
 
 export type CaptchaProps = {
     okCallback: (e: true) => void
     failCallback?: (e: true) => void
-    stringMinLen?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-    stringMaxLen?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+    stringMinLen?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    stringMaxLen?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     captchaStringType?: CaptchaStringType
     captchaCharsCollection?: string
     caseSensitive?: boolean
     timeBeforeInputInMS?: number
     maxAttempts?: number
-    perferedTheme?: PreferedTheme,
-    language?: CaptchaLanguage,
+    perferedTheme?: PreferedTheme
+    language?: CaptchaLanguage
     useStyleSheet?: boolean
 
     htmlPropsForm?: HTMLAttributes<HTMLFormElement>
     htmlPropsTitle?: HTMLAttributes<HTMLDivElement>
     htmlPropsCanvasFrame?: HTMLAttributes<HTMLDivElement>
     htmlPropsCanvas?: HTMLAttributes<HTMLCanvasElement>
-    htmlPropsRefreshButton?: HtmlHTMLAttributes<HTMLButtonElement>
+    htmlPropsRefreshButton?: HTMLAttributes<HTMLButtonElement>
     htmlPropsInputFrame?: HTMLAttributes<HTMLFieldSetElement>
     htmlPropsLabel?: HTMLAttributes<HTMLLabelElement>
     htmlPropsLabelText?: HTMLAttributes<HTMLSpanElement>
-    htmlPropsInput?: HtmlHTMLAttributes<HTMLInputElement>
-    htmlPropsOkButton?: HtmlHTMLAttributes<HTMLButtonElement>
-    htmlPropsFail?: HtmlHTMLAttributes<HTMLDivElement>
+    htmlPropsInput?: HTMLAttributes<HTMLInputElement>
+    htmlPropsOkButton?: HTMLAttributes<HTMLButtonElement>
+    htmlPropsFail?: HTMLAttributes<HTMLDivElement>
 
     textTitle?: string
     textTryAgain?: string
@@ -47,15 +47,15 @@ export type BehaviourItems = Record<string, {
 
 export type ClientInfo = {
     screenAvailHeight: number[]
-    screenAvailWidth: number[],
+    screenAvailWidth: number[]
     movements: number[][]
 }
 
 export type PreferedTheme = "dark" | "light" | "auto"
 
-export type BehaviourEvents = "touchend" | "touchstart" | "mouseup" | "mousemove" | "mousedown" | "keydown" | "keyup";
+export type BehaviourEvents = "touchend" | "touchstart" | "mouseup" | "mousemove" | "mousedown" | "keydown" | "keyup"
 
-export type CaptchaStringType = "abcLowerCase" | "abcUpperCase" | "numbers" | "abc123Complete" | "abcComplete" | "abc123Friendly" | "custom";
+export type CaptchaStringType = "abcLowerCase" | "abcUpperCase" | "numbers" | "abc123Complete" | "abcComplete" | "abc123Friendly" | "custom"
 
 export type CaptchaText = Record<CaptchaLanguage,
     {

@@ -1,11 +1,9 @@
-// import * as React from 'react';
-
 export const keepInputsIneractive = () => {
 
     if (typeof document === 'object' && typeof window === 'object') {
 
-        const buttons:NodeListOf<HTMLButtonElement> = document.querySelectorAll('button')
-        const inputs:NodeListOf<HTMLInputElement> = document.querySelectorAll('input')
+        const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button')
+        const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input')
         const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a')
 
         const allInputs: (HTMLButtonElement | HTMLInputElement | HTMLAnchorElement)[] = [
@@ -14,26 +12,16 @@ export const keepInputsIneractive = () => {
             ...Array.from(links),
         ];
 
-     //  const allInputs = [...buttons, ...inputs, ...links];
-    //    const allInputs = new Set<NodeListOf<HTMLButtonElement | HTMLInputElement | HTMLAnchorElement>>()
-    //    allInputs.add(buttons)
-    //    allInputs.add(inputs)
-    //    allInputs.add(links)
 
-     //   for (let i = 0; i < allInputs.length; i += 1) {
-            for (const oneInput of allInputs) {
-        //    const oneInput = allInputs[i]
+        for (const oneInput of allInputs) {
 
             if (oneInput?.dataset?.captcha !== "listener") {
 
-                const computedValue = window.getComputedStyle(oneInput);
+                const computedValue = window.getComputedStyle(oneInput)
 
-                const hasInlineStyle = oneInput.style.cssText;
-                const currentZindex = computedValue.zIndex;
-                const currentPosition = computedValue.position;
-
-
-                console.log({ computedValue, hasInlineStyle })
+                const hasInlineStyle = oneInput.style.cssText
+                const currentZindex = computedValue.zIndex
+                const currentPosition = computedValue.position
 
                 if (hasInlineStyle) oneInput.dataset.captchainlinestyle = hasInlineStyle;
 
@@ -44,7 +32,7 @@ export const keepInputsIneractive = () => {
 
                 if (parseInt(currentZindex) < 2 || currentZindex === 'auto') {
                     oneInput.dataset.captchazindex = currentZindex
-                    oneInput.style.zIndex = '2'                
+                    oneInput.style.zIndex = '2'
                 }
                 oneInput.style.position = 'relative'
             }
@@ -56,22 +44,15 @@ export const resetInputsInteractivity = () => {
 
     if (typeof document === 'object' && typeof window === 'object') {
 
-   //     const buttons = document.getElementsByTagName('button')
-   //     const inputs = document.getElementsByTagName('input')
-   //     const links = document.getElementsByTagName('a')
-//
-   //     const allInputs = [...buttons, ...inputs, ...links];
+        const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button')
+        const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input')
+        const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a')
 
-   const buttons:NodeListOf<HTMLButtonElement> = document.querySelectorAll('button')
-   const inputs:NodeListOf<HTMLInputElement> = document.querySelectorAll('input')
-   const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a')
-
-   const allInputs: (HTMLButtonElement | HTMLInputElement | HTMLAnchorElement)[] = [
-       ...Array.from(buttons),
-       ...Array.from(inputs),
-       ...Array.from(links),
-   ];
-
+        const allInputs: (HTMLButtonElement | HTMLInputElement | HTMLAnchorElement)[] = [
+            ...Array.from(buttons),
+            ...Array.from(inputs),
+            ...Array.from(links),
+        ];
 
         for (let i = 0; i < allInputs.length; i += 1) {
             const oneInput = allInputs[i]
@@ -87,7 +68,7 @@ export const resetInputsInteractivity = () => {
 
                 if (oneInput.dataset.captchaposition) oneInput.removeAttribute('data-captchaposition')
                 if (oneInput.dataset.captchazindex) oneInput.removeAttribute('data-captchazindex')
-  
+
             }
         }
     }

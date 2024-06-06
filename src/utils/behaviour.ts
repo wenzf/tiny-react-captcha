@@ -1,6 +1,6 @@
 import { MutableRefObject, SyntheticEvent } from "react";
-import { BehaviourEvents, BehaviourItems, ClientInfo } from "./types";
-import { USER_INPUT_EVENTS } from "./constants";
+import { BehaviourEvents, BehaviourItems, ClientInfo } from "./../types";
+import { USER_INPUT_EVENTS } from "./../constants";
 
 
 export const checkBehaviour = (behaviour: MutableRefObject<BehaviourItems>): boolean => {
@@ -31,6 +31,7 @@ export const checkBehaviour = (behaviour: MutableRefObject<BehaviourItems>): boo
 
 
     if (isMouseOk || isToucheOk || isKeyboardOk) return true;
+
     return false
 }
 
@@ -41,13 +42,13 @@ export const onUserInputCB = (
     behaviour: MutableRefObject<BehaviourItems>,
     clientInfo: MutableRefObject<ClientInfo>
 ) => {
-    // @ts-expect-error asdf
+    // @ts-expect-error
     const clientScreen = e.view.screen as Screen;
 
     clientInfo.current.screenAvailHeight.push(clientScreen.availHeight)
     clientInfo.current.screenAvailWidth.push(clientScreen.availWidth)
 
-    // @ts-expect-error asdf
+    // @ts-expect-error
     clientInfo.current.movements.push([e.clientX ?? e.pageX, e.clientY ?? e.pageY])
 
     switch (type) {
@@ -100,7 +101,7 @@ export const onUserInputCB = (
         case USER_INPUT_EVENTS.KEY_DOWN:
             behaviour.current.keyboard.down += 1
 
-            // @ts-expect-error asdf
+            // @ts-expect-error
             if (e.key === 'Tab') {
                 if (behaviour.current.keyboard.numbTab !== undefined) behaviour.current.keyboard.numbTab += 1
             }
@@ -112,7 +113,7 @@ export const onUserInputCB = (
             }
             break
         case USER_INPUT_EVENTS.KEY_UP:
-            // @ts-expect-error asdf
+            // @ts-expect-error
             if (e.key === 'Tab') {
                 if (behaviour.current.keyboard.numbTab !== undefined) behaviour.current.keyboard.numbTab += 1
             }
@@ -129,43 +130,39 @@ export const onUserInputCB = (
 
 export function isLine(points: number[][]): boolean {
     if (points.length < 2) {
-        return false;
+        return false
     }
 
     let slope: number | undefined;
     let yIntercept: number | undefined;
 
     for (let i = 0; i < points.length - 1; i += 1) {
-        const [x1, y1] = points[i];
-        const [x2, y2] = points[i + 1];
+        const [x1, y1] = points[i]
+        const [x2, y2] = points[i + 1]
 
         if (x1 !== undefined && y1 !== undefined && x2 !== undefined && y2 !== undefined) {
-            slope = (y2 - y1) / (x2 - x1);
-            yIntercept = y1 - (slope * x1);
-            break;
+            slope = (y2 - y1) / (x2 - x1)
+            yIntercept = y1 - (slope * x1)
+            break
         }
     }
 
     if (slope === undefined || yIntercept === undefined) {
-        return false;
+        return false
     }
 
-
-
-    // @ts-expect-error asd
+    // @ts-expect-error
     return points.every(([x, y]) => {
 
         if (x === undefined) {
-            return true;
+            return true
         }
 
         if (slope && yIntercept) {
             const slopleByX = slope * x;
 
-            if (slopleByX !== undefined) return y === slopleByX + yIntercept;
+            if (slopleByX !== undefined) return y === slopleByX + yIntercept
         }
-
-
     });
 }
 
@@ -177,7 +174,7 @@ export const isStrangeDimension = (screenXorY: number[]): boolean => {
             if (screenXorY[i] > 200 && screenXorY[i] < 8000) {
                 initialValue = screenXorY[i]
             } else {
-                return true;
+                return true
             }
         } else {
             if (initialValue !== screenXorY[i]) return true

@@ -1,8 +1,6 @@
-// import { CanvasHTMLAttributes } from "react";
-import { isDarkModePerefered, randomNumber } from "./captchaHelpers";
-import { PreferedTheme } from "./types";
-import { canvasFonts } from "./constants";
-
+import { isDarkModePerefered, randomNumber } from "./helpers";
+import { PreferedTheme } from "./../types";
+import { canvasFonts } from "./../constants";
 
 
 export const drawCaptchaOnCanvas = (ctx: CanvasRenderingContext2D, captcha: string, perferedTheme: PreferedTheme) => {
@@ -30,20 +28,6 @@ export const drawCaptchaOnCanvas = (ctx: CanvasRenderingContext2D, captcha: stri
     const c7h = isDarkmode ? 45 : 210
     const c8h = isDarkmode ? 185 : 70
     const c9h = isDarkmode ? 135 : 120
-
-
-    /**
-     *     const c1h = isDarkmode ? 255 : 115
-    const c2h = isDarkmode ? 245 : 225
-    const c3h = isDarkmode ? 235 : 125
-    const c4h = isDarkmode ? 225 : 50
-    const c5h = isDarkmode ? 215 : 220
-    const c6h = isDarkmode ? 205 : 110
-    const c7h = isDarkmode ? 195 : 210
-    const c8h = isDarkmode ? 185 : 70
-    const c9h = isDarkmode ? 175: 120
-
-     */
 
     const ran1a = randomNumber(c1l, c1h)
     const ran1b = randomNumber(c1l, c2h)
@@ -92,17 +76,13 @@ export const drawCaptchaOnCanvas = (ctx: CanvasRenderingContext2D, captcha: stri
                 ran,
                 50
             );
-
         }
 
         ctx.shadowColor = textColors[randomNumber(0, 3)]
-        ctx.shadowBlur = randomNumber(0, xInitialSpace / 3);
-
+        ctx.shadowBlur = randomNumber(0, xInitialSpace / 3)
         ctx.shadowOffsetX = randomNumber(-3, 3)
         ctx.shadowOffsetY = randomNumber(-5, 5);
         (ctx as any).textRendering = "geometricPrecision"
         ctx.filter = `blur(${randomNumber(0, 5) * 0.1}px)`
     }
-
-
 };

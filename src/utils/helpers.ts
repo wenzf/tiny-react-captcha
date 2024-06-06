@@ -1,5 +1,6 @@
-import { CaptchaStringType } from "./types";
-import { abc123Complete, abc123Friendly, abcLowerCase, abcUpperCase, numbers } from "./constants";
+import { CaptchaStringType } from "./../types";
+import { abc123Complete, abc123Friendly, abcLowerCase, abcUpperCase, numbers } from "./../constants";
+
 
 export function randomNumber(minInp: number, maxInp: number): number {
 
@@ -9,22 +10,17 @@ export function randomNumber(minInp: number, maxInp: number): number {
     if (minInp > maxInp) {
         min = maxInp
         max = minInp
-        // throw new Error('Invalid range: min must be less than or equal to max');
     }
     if (typeof window === 'object' && window?.crypto && typeof window.crypto.getRandomValues === 'function') {
-        const array = new Uint32Array(1);
-        window.crypto.getRandomValues(array);
-        const randomNumber = array[0] / (Math.pow(2, 32) - 1); // Normalize to [0, 1)
+        const array = new Uint32Array(1)
+        window.crypto.getRandomValues(array)
+        const randomNumber = array[0] / (Math.pow(2, 32) - 1)
 
-        // Scale to desired range
-        return Math.floor(randomNumber * (max - min + 1)) + min;
+        return Math.floor(randomNumber * (max - min + 1)) + min
     } else {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min
     }
 }
-
-
-
 
 
 export function randomString(length: number, charCollection: string): string {
@@ -55,6 +51,7 @@ export function getCharCollection(collectionStringType?: CaptchaStringType, capt
     }
 
 }
+
 
 export const isDarkModePerefered = (): boolean => {
     if (typeof window === 'object') {

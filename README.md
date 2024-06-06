@@ -4,7 +4,9 @@ A tiny captcha component for React
 
 - using a `canvas` element to paint chars
 - fully customizable
-- simple detection of bots by input events
+- simple detection of bots
+- - mouse moves as straight line
+- - 
 - works for SSR
 - no dependencies
 
@@ -25,7 +27,7 @@ npm install tiny-react-captcha
 
 ```TSX
 import TinyReactCaptcha from 'tiny-react-captcha'
-import 'tiny-react-captcha/lib/css/css.css'
+import 'tiny-react-captcha/trc-styles.css'
 
 
 function Login() {
@@ -53,9 +55,9 @@ function Login() {
 
 If used in `remix`, you might need to add the package as `serverDependenciesToBundle` in `remix.config.js`
 
-```JSON
+``JSON
   serverDependenciesToBundle: ["tiny-react-captcha"]
-```
+``
 
 
 ## Properties
@@ -66,7 +68,7 @@ If used in `remix`, you might need to add the package as `serverDependenciesToBu
 |`false`| `failCallback` | `(e: true) => void` |       | returns `true` if amount of attempts is equal or higher than `maxAttempts`|
 |`false`| `stringMinLen` | `number` | `1-7` | min length of Captcha string|
 |`false`| `stringMaxLen` | `number` | `1-7` | max length of Captcha string|
-|`false`| `captchaStringType`, `abcLowerCase`,`abcUpperCase`,`numbers`, `abc123Complete`, `abcComplete`, `abc123Friendly`, `custom` | `abc123Friendly` | type of signs shown as captcha |
+|`false`| `captchaStringType`, `abcLowerCase`, `abcUpperCase`, `numbers`, `abc123Complete`, `abcComplete`, `abc123Friendly`, `custom` | `abc123Friendly` | type of signs shown as captcha. See `src/constants/index.ts` |
 |`false`| `captchaCharsCollection` | `string` | `undefined` | a collection of chars and or numbers used for the Captcha |
 |`false`| `caseSensitive` | `boolean` | `false` | does user input need to be case sensitive? |
 |`false`| `timeBeforeInputInMS` | `number` | `2_000` | if user enters captcha faster, captcha is not considered as solved correctly |
@@ -82,9 +84,9 @@ If used in `remix`, you might need to add the package as `serverDependenciesToBu
 |`false`| `htmlPropsInputFrame` | `HTMLAttributes<HTMLFieldSetElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsLabel` | `HTMLAttributes<HTMLLabelElement>` | `undefined` | inject html props |
 |`false`| `htmlPropsLabelText` | `HTMLAttributes<HTMLSpanElement>` | `undefined` | inject html props |
-|`false`| `htmlPropsInput` | `HtmlHTMLAttributes<HTMLInputElement>` | `undefined` | inject html props |
-|`false`| `htmlPropsOkButton` | `HtmlHTMLAttributes<HTMLButtonElement>` | `undefined` | inject html props |
-|`false`| `htmlPropsFail` | `HtmlHTMLAttributes<HTMLDivElement>` | `undefined` | inject html props |
+|`false`| `htmlPropsInput` | `HTMLAttributes<HTMLInputElement>` | `undefined` | inject html props |
+|`false`| `htmlPropsOkButton` | `HTMLAttributes<HTMLButtonElement>` | `undefined` | inject html props |
+|`false`| `htmlPropsFail` | `HTMLAttributes<HTMLDivElement>` | `undefined` | inject html props |
 |`false`| `textTitle` | `string` | `undefined` | custom text |
 |`false`| `textTryAgain` | `string` | `undefined` | custom text |
 |`false`| `textEnterCaptcha` | `string` | `undefined` | custom text |

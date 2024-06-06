@@ -1,12 +1,10 @@
-// import * as React from 'react';
 import { BaseSyntheticEvent, SyntheticEvent, useCallback, useEffect, useRef, useState } from "react"
-import { getCharCollection, randomNumber, randomString } from "./captchaHelpers"
+import { getCharCollection, randomNumber, randomString } from "./utils/helpers"
 import { CAPTCHA_DEFAULTS, CAPTCHA_TEXTS, USER_INPUT_EVENTS, behaviourInit, clientInfoInit } from "./constants"
-import { drawCaptchaOnCanvas } from "./canvas"
-import { checkBehaviour, isLine, isStrangeDimension, onUserInputCB } from "./behaviourUtils"
+import { drawCaptchaOnCanvas } from "./utils/canvas"
+import { checkBehaviour, isLine, isStrangeDimension, onUserInputCB } from "./utils/behaviour"
 import { CaptchaLanguage, CaptchaProps, CaptchaText } from "./types"
-// import './css.css';
-import { keepInputsIneractive, resetInputsInteractivity } from "./dom"
+import { keepInputsIneractive, resetInputsInteractivity } from "./utils/dom"
 import { UpdateIconSVG } from "./res/UpdateIconSVG"
 import { CircleCheckIconSVG } from "./res/CircleCheckIconSVG"
 import { CircleCrossSVG } from "./res/CircleCrossIconSVG"
@@ -23,7 +21,6 @@ export const Captcha = ({
     maxAttempts,
     perferedTheme,
     language,
-
     useStyleSheet,
 
     htmlPropsForm,
@@ -76,8 +73,7 @@ export const Captcha = ({
     const [numberOfTypes, setNumberOfTypes] = useState(0)
     const [tryAgain, setTryAgain] = useState(false)
     const [didFail, setDidFail] = useState(false)
-    const [didSuceed, setDidSucced] = useState(false);
-
+    const [didSuceed, setDidSucced] = useState(false)
 
     const onTypeToForm = (e: BaseSyntheticEvent) => {
         setNumberOfTypes((prev) => prev + 1)
@@ -104,10 +100,20 @@ export const Captcha = ({
         const inputOK = caseSensitive
             ? captchaInput === captchaStringRef.current
             : captchaInput.toLowerCase() === captchaStringRef.current.toLowerCase()
+
+        // is too fast?    
         const timeOk = timeOpenRef.current + _timeBeforeInputsInMs < Date.now()
+
+        // is input typed?
         const numberOfTypesOk = numberOfTypes >= captchaInput.length
+
+        // any suspicious inputs?
         const isBehaviourOk = checkBehaviour(behaviourRef)
+
+        // moving as straight line?
         const isMovementLine = isLine(clientInfoRef.current.movements);
+
+        // is device large enough?
         const isDeviceWidthUnrealisticOrUnstable = isStrangeDimension(clientInfoInit.screenAvailWidth);
         const isDeviceHeightUnrealisticOrUnstable = isStrangeDimension(clientInfoInit.screenAvailHeight);
 
@@ -153,8 +159,6 @@ export const Captcha = ({
         onTouchEnd: (e: SyntheticEvent) => onUserInput(USER_INPUT_EVENTS.TOUCH_END, e, behaviourRef, clientInfoRef)
     }
 
-
-
     useEffect(() => {
         if (attempts < _maxAttempts) {
             setCaptchaInput('')
@@ -169,9 +173,14 @@ export const Captcha = ({
     }, [attempts, _maxAttempts, _preferedTheme, failCallback])
 
     useEffect(() => {
+        /**
+         * in the background a fixed input element with z-index=0 is used to detect user inputs. In oder to
+         * keep other input elements are still clickable, those styles are temporarilly changed.
+         */
         keepInputsIneractive()
         return () => resetInputsInteractivity()
     }, [])
+
 
     return (
         <div
@@ -213,7 +222,6 @@ export const Captcha = ({
                                             ref={canvasRef}
                                         />
                                         <button
-
                                             title="renew captcha"
                                             {..._useStyleSheet ? { className: 'trc-cainp trc-up' } : {}}
                                             type="button"
