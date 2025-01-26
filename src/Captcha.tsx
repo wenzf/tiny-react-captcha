@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { BaseSyntheticEvent, SyntheticEvent, useCallback, useEffect, useRef, useState } from "react"
 import { getCharCollection, randomNumber, randomString } from "./utils/helpers"
 import { CAPTCHA_DEFAULTS, CAPTCHA_TEXTS, USER_INPUT_EVENTS, behaviourInit, clientInfoInit } from "./constants"
@@ -94,7 +95,7 @@ export const Captcha = ({
         clientInfoRef.current = clientInfoInit;
     }
 
-    // @ts-expect-error
+    // @ts-expect-error todo: add correct type
     const onCheckCaptcha = (e: BaseSyntheticEvent) => {
         e.preventDefault()
         const inputOK = caseSensitive
@@ -191,6 +192,7 @@ export const Captcha = ({
                     <>
 
                         <input
+                            aria-label="Captcha"
                             name="capturing_user_events"
                             tabIndex={-1}
                             data-captcha="listener"
