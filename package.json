@@ -1,6 +1,6 @@
 {
   "name": "tiny-react-captcha",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A tiny captcha component for React",
   "license": "MIT",
   "main": "./lib/cjs/index.js",
