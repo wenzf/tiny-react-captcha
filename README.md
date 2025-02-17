@@ -28,6 +28,7 @@ npm install tiny-react-captcha
 ```TSX
 import TinyReactCaptcha from 'tiny-react-captcha'
 import 'tiny-react-captcha/lib/trc-styles.css'
+import { Suspense, useState } from 'react'
 
 
 function Login() {
@@ -36,9 +37,11 @@ function Login() {
         <main>
             <h1>Sign in</h1>
             {!captchaOk ? (
-                <TinyReactCaptcha
-                    okCallback={setCaptchaOk}
-                />
+                <Suspense fallback={null}>
+                    <TinyReactCaptcha
+                        okCallback={setCaptchaOk}
+                    />
+                </Suspense>
             ) : (
                 <form>
                     <input type="text" />
