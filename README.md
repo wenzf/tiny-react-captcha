@@ -23,25 +23,27 @@ or
 npm install tiny-react-captcha
 ```
 
-## Example
+
+
+## Basic usage
+This is supposed to work for most cases. 
 
 ```TSX
+import { useState } from 'react'
 import TinyReactCaptcha from 'tiny-react-captcha'
 import 'tiny-react-captcha/lib/trc-styles.css'
-import { Suspense, useState } from 'react'
 
 
 function Login() {
     const [captchaOk, setCaptchaOk] = useState(false);
+
     return (
         <main>
             <h1>Sign in</h1>
             {!captchaOk ? (
-                <Suspense fallback={null}>
-                    <TinyReactCaptcha
-                        okCallback={setCaptchaOk}
-                    />
-                </Suspense>
+                <TinyReactCaptcha
+                    okCallback={setCaptchaOk}
+                />
             ) : (
                 <form>
                     <input type="text" />
@@ -53,6 +55,86 @@ function Login() {
     );
 }
 ```
+
+
+## Server side rendering
+Server side rendering might lead to hydration errors (`react-router v7`, ``>= React 19``). To avoid this, render the component on client side only. See two examples below.
+
+
+### Example using `useEffect`
+```TSX
+import { useState } from 'react'
+import TinyReactCaptcha from 'tiny-react-captcha'
+import 'tiny-react-captcha/lib/trc-styles.css'
+
+function Login() {
+    const [captchaOk, setCaptchaOk] = useState(false);
+    const [showComponent, setShowComponent] = useState(false)
+
+    useEffect(() => {
+        setShowComponent(true)
+    }, [])
+
+    return (
+        <main>
+            <h1>Sign in</h1>
+            {!captchaOk && showComponent ? (
+                <TinyReactCaptcha
+                    okCallback={setCaptchaOk}
+                />
+            ) : null } 
+            {showComponent && captchaOk ? (
+                <form>
+                    <input type="text" />
+                    <input type="password" />
+                    <input type="submit" />
+                </form>
+            ) : null}
+        </main>
+    );
+}
+```
+
+### Example using `<ClientOnly>`
+```TSX
+import { useState, lazy } from 'react'
+import { ClientOnly } from "remix-utils/client-only";
+import 'tiny-react-captcha/lib/trc-styles.css'
+
+const TinyReactCaptcha = lazy(() => import('tiny-react-captcha'));
+
+
+function Login() {
+    const [captchaOk, setCaptchaOk] = useState(false);
+    return (
+        <main>
+            <h1>Sign in</h1>
+            {!captchaOk ? (
+                 <ClientOnly fallback={null}>
+                    {() => (
+                        <TinyReactCaptcha
+                            okCallback={setCaptchaOk}
+                        />
+                    )}
+                </ClientOnly>
+            ) : (
+                <form>
+                    <input type="text" />
+                    <input type="password" />
+                    <input type="submit" />
+                </form>
+            )}
+        </main>
+    );
+}
+```
+
+
+
+    
+
+
+
 
 ## Usage with Remix.run
 
