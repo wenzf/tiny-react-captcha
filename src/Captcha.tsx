@@ -173,14 +173,14 @@ export const Captcha = ({
         }
     }, [attempts, _maxAttempts, _preferedTheme, failCallback])
 
-    useEffect(() => {
-        /**
-         * in the background a fixed input element with z-index=0 is used to detect user inputs. In oder to
-         * keep other input elements are still clickable, those styles are temporarilly changed.
-         */
-        keepInputsIneractive()
-        return () => resetInputsInteractivity()
-    }, [])
+  useEffect(() => {
+      /**
+       * in the background a fixed input element with z-index=0 is used to detect user inputs. In oder to
+       * keep other input elements are still clickable, those styles are temporarilly changed.
+       */
+      keepInputsIneractive()
+      return () => resetInputsInteractivity()
+  }, [])
 
 
     return (
@@ -198,6 +198,15 @@ export const Captcha = ({
                             data-captcha="listener"
                             {..._useStyleSheet ? { className: 'trc-bgli' } : {}}
                             readOnly
+                            style={{
+                                opacity: 0,
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                cursor: 'default',
+                                height: '100vh',
+                                width: '100vw'
+                            }}
                             type="text"
                             {...listeners}
                         />
@@ -231,6 +240,7 @@ export const Captcha = ({
                                             onClick={() => onChangeCaptcha()}
                                             data-captcha="listener"
                                             {...htmlPropsRefreshButton}
+                                            style={{border: 'none', backgroundColor: 'transparent'}}
                                         >
                                             <UpdateIconSVG
                                                 aria-label="renew captcha"

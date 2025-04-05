@@ -82,7 +82,7 @@ export const drawCaptchaOnCanvas = (ctx: CanvasRenderingContext2D, captcha: stri
         ctx.shadowBlur = randomNumber(0, xInitialSpace / 3)
         ctx.shadowOffsetX = randomNumber(-3, 3)
         ctx.shadowOffsetY = randomNumber(-5, 5);
-        (ctx as any).textRendering = "geometricPrecision"
+        (ctx).textRendering = "geometricPrecision"
         ctx.filter = `blur(${randomNumber(0, 5) * 0.1}px)`
     }
 };

@@ -42,13 +42,13 @@ export const onUserInputCB = (
     behaviour: MutableRefObject<BehaviourItems>,
     clientInfo: MutableRefObject<ClientInfo>
 ) => {
-    // @ts-expect-error
+    // @ts-expect-error override
     const clientScreen = e.view.screen as Screen;
 
     clientInfo.current.screenAvailHeight.push(clientScreen.availHeight)
     clientInfo.current.screenAvailWidth.push(clientScreen.availWidth)
 
-    // @ts-expect-error
+    // @ts-expect-error override
     clientInfo.current.movements.push([e.clientX ?? e.pageX, e.clientY ?? e.pageY])
 
     switch (type) {
@@ -101,7 +101,7 @@ export const onUserInputCB = (
         case USER_INPUT_EVENTS.KEY_DOWN:
             behaviour.current.keyboard.down += 1
 
-            // @ts-expect-error
+            // @ts-expect-error override
             if (e.key === 'Tab') {
                 if (behaviour.current.keyboard.numbTab !== undefined) behaviour.current.keyboard.numbTab += 1
             }
@@ -113,7 +113,7 @@ export const onUserInputCB = (
             }
             break
         case USER_INPUT_EVENTS.KEY_UP:
-            // @ts-expect-error
+            // @ts-expect-error override
             if (e.key === 'Tab') {
                 if (behaviour.current.keyboard.numbTab !== undefined) behaviour.current.keyboard.numbTab += 1
             }
@@ -151,7 +151,7 @@ export function isLine(points: number[][]): boolean {
         return false
     }
 
-    // @ts-expect-error
+    // @ts-expect-error override
     return points.every(([x, y]) => {
 
         if (x === undefined) {

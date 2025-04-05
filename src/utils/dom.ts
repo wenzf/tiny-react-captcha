@@ -34,7 +34,6 @@ export const keepInputsIneractive = () => {
                     oneInput.dataset.captchazindex = currentZindex
                     oneInput.style.zIndex = '2'
                 }
-                oneInput.style.position = 'relative'
             }
         }
     }

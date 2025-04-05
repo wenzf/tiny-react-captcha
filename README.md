@@ -97,7 +97,7 @@ function Login() {
 
 ### Example using `<ClientOnly>`
 ```TSX
-import { useState, lazy } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { ClientOnly } from "remix-utils/client-only";
 import 'tiny-react-captcha/lib/trc-styles.css'
 
@@ -110,13 +110,15 @@ function Login() {
         <main>
             <h1>Sign in</h1>
             {!captchaOk ? (
-                 <ClientOnly fallback={null}>
-                    {() => (
-                        <TinyReactCaptcha
-                            okCallback={setCaptchaOk}
-                        />
-                    )}
-                </ClientOnly>
+                <Suspense fallback={null}>
+                     <ClientOnly fallback={null}>
+                        {() => (
+                            <TinyReactCaptcha
+                                okCallback={setCaptchaOk}
+                            />
+                         )}
+                    </ClientOnly>
+                </Suspense>
             ) : (
                 <form>
                     <input type="text" />
