@@ -200,12 +200,12 @@ export const Captcha = ({
                             readOnly
                             style={{
                                 opacity: 0,
-                                position: 'fixed',
+                                position: 'absolute',
                                 top: 0,
                                 left: 0,
                                 cursor: 'default',
-                                height: '100vh',
-                                width: '100vw'
+                                height: '100%',
+                                width: '100%'
                             }}
                             type="text"
                             {...listeners}
